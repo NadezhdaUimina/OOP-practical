@@ -31,12 +31,13 @@ class Infrastructure {
     public String getAllInfo(int idStudent) {
         Student student = db.student.get(idStudent - 1);
 
-        return String.format("%s, %s, %s, %s, %s",
+        return String.format("%s, %s, %s, %s, %s, %s",
                 student.id,
                 student.firstName,
                 student.lastName,
                 student.telephone,
-                student.dateBirth);
+                student.dateBirth,
+                db.group.get(student.group-1).group);
 
     }
 
@@ -89,17 +90,21 @@ class Infrastructure {
      */
     Db init() {
         db = new Db();
-        Student student1 = new Student(1, "Иван", "Иванов", "56738", "06.12.2020");
-        Student student2 = new Student(2, "Михаил", "Матвеенко", "75794", "10.09.2017");
-        Student student3 = new Student(3, "Алексей", "Петров", "95739", "10.03.2020");
-        Student student4 = new Student(4, "Анна", "Серова", "56734", "01.10.2015");
-        Student student5 = new Student(5, "Ольга", "Романова", "87650","8.11.2018");
+        Student student1 = new Student(1, "Иван", "Иванов", "56738", "06.12.2020", 1);
+        Student student2 = new Student(2, "Михаил", "Матвеенко", "75794", "10.09.2017", 2);
+        Student student3 = new Student(3, "Алексей", "Петров", "95739", "10.03.2020", 1);
+        Student student4 = new Student(4, "Анна", "Серова", "56734", "01.10.2014", 3);
+        Student student5 = new Student(5, "Ольга", "Романова", "87650", "8.11.2013", 3);
 
         db.student.add(student1);
         db.student.add(student2);
         db.student.add(student3);
         db.student.add(student4);
         db.student.add(student5);
+
+        db.group.add(new Group(1, "Младшая группа"));
+        db.group.add(new Group(2, "Дошкольная группа"));
+        db.group.add(new Group(3, "Школьник"));
 
         return db;
     }
@@ -110,7 +115,7 @@ class Infrastructure {
  */
 class Db {
     ArrayList<Student> student = new ArrayList<>();
-
+    ArrayList<Group> group = new ArrayList<>();
 }
 
 /**
@@ -122,13 +127,27 @@ class Student {
     String lastName;
     String telephone;
     String dateBirth;
+    int group;
 
-    public Student(int id, String firstName, String lastName, String telephone, String dateBirth) {
+    public Student(int id, String firstName, String lastName, String telephone, String dateBirth, int group) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.telephone = telephone;
         this.dateBirth = dateBirth;
+        this.group = group;
     }
+}
 
+/**
+ * создание модели группы
+ */
+class Group {
+    int id;
+    String group;
+
+    public Group(int id, String group) {
+        this.id = id;
+        this.group = group;
+    }
 }
