@@ -1,5 +1,5 @@
 public class Interface {
-    /*
+    /**
      * info - меню для работы с БД
      */
     public void info() {

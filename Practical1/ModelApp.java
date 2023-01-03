@@ -1,9 +1,6 @@
 import java.io.IOException;
 
 public class ModelApp {
-    /*
-     * app - работа с БД по меню
-     */
     public void app() throws IOException {
         Interface view = new Interface();
         view.info();
