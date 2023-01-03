@@ -31,13 +31,12 @@ class Infrastructure {
     public String getAllInfo(int idStudent) {
         Student student = db.student.get(idStudent - 1);
 
-        return String.format("%s, %s, %s, %s, %s, %s",
+        return String.format("%s, %s, %s, %s, %s",
                 student.id,
                 student.firstName,
                 student.lastName,
                 student.telephone,
-                student.adress,
-                student.experience);
+                student.dateBirth);
 
     }
 
@@ -90,11 +89,11 @@ class Infrastructure {
      */
     Db init() {
         db = new Db();
-        Student student1 = new Student(1, "Иван", "Иванов", "56738", "Москва", "06.12.2020");
-        Student student2 = new Student(2, "Михаил", "Матвеенко", "75794", "Москва", "10.09.2017");
-        Student student3 = new Student(3, "Алексей", "Петров", "95739", "Москва", "10.03.2020");
-        Student student4 = new Student(4, "Анна", "Серова", "56734", "Москва", "01.10.2015");
-        Student student5 = new Student(5, "Ольга", "Романова", "87650", "Москва", "08.11.2018");
+        Student student1 = new Student(1, "Иван", "Иванов", "56738", "06.12.2020");
+        Student student2 = new Student(2, "Михаил", "Матвеенко", "75794", "10.09.2017");
+        Student student3 = new Student(3, "Алексей", "Петров", "95739", "10.03.2020");
+        Student student4 = new Student(4, "Анна", "Серова", "56734", "01.10.2015");
+        Student student5 = new Student(5, "Ольга", "Романова", "87650","8.11.2018");
 
         db.student.add(student1);
         db.student.add(student2);
@@ -122,15 +121,14 @@ class Student {
     String firstName;
     String lastName;
     String telephone;
-    String adress;
-    String experience;
+    String dateBirth;
 
-    public Student(int id, String firstName, String lastName, String telephone, String addres, String experience) {
+    public Student(int id, String firstName, String lastName, String telephone, String dateBirth) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.telephone = telephone;
-        this.adress = addres;
-        this.experience = experience;
+        this.dateBirth = dateBirth;
     }
+
 }
