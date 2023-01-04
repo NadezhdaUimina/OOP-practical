@@ -42,9 +42,9 @@ class Infrastructure {
     }
 
     /**
-     * allStaff - вывод всех данных в консоль
+     * allStudent - вывод всех данных в консоль
      */
-    public void allStaff() {
+    public void allStudent() {
         System.out.println("Данные всех учеников: ");
         for (int i = 1; i <= db.student.size(); i++) {
             System.out.println(getAllInfo(i));

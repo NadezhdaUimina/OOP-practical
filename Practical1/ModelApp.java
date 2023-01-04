@@ -8,10 +8,10 @@ public class ModelApp {
         int number = in.getNumber();
         Infrastructure infrastructure = new Infrastructure();
         if (number == 1) {
-            infrastructure.allStaff();
+            infrastructure.allStudent();
         }
         if (number == 2) {
-            String info = in.getStaffInfo();
+            String info = in.getStudentInfo();
             infrastructure.search(info);
         }
         if (number == 3) {

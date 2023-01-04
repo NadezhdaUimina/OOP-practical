@@ -15,16 +15,17 @@ public class Input {
     }
 
     /**
-     * getStaffInfo - принимает данные от пользователя для поска в БД
+     * getStudentInfo - принимает данные от пользователя для поска в БД
      * 
      * @return входные данные при поике
      */
-    public String getStaffInfo() {
+    public String getStudentInfo() {
         Scanner scanner = new Scanner(System.in);
         String info;
         System.out.print("Введите данные поиска: ");
         info = scanner.nextLine();
         return info;
     }
+
 
 }
