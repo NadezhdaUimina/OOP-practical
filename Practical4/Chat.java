@@ -6,7 +6,6 @@ import java.util.ArrayList;
 class Chat implements Chatroom {
 
     ArrayList<User> users = new ArrayList<>();
-    public String text;
 
     /*
      * Отравка текстового сообщения
@@ -17,7 +16,6 @@ class Chat implements Chatroom {
         for (User user : users) {
             if (user.name != me.name) {
                 user.printMessage(text);
-                text = text + user.strMessage(text);
             }
         }
     }
@@ -28,7 +26,6 @@ class Chat implements Chatroom {
     @Override
     public void appendClient(User client) {
         System.out.println("\n >>> добавился " + client.name);
-        text = text + "\n >>> добавился " + client.name;
         users.add(client);
     }
 
@@ -39,11 +36,9 @@ class Chat implements Chatroom {
     public void sendMessage(String fileName, Double fileSize, User me) {
         System.out.println(
                 me.name + " отправил файл с именем: " + fileName + " Раземер файла " + fileSize + " Мб");
-        text = text + me.name + " отправил файл с именем: " + fileName + " Раземер файла " + fileSize + " Мб";
         for (User user : users) {
             if (user.name != me.name) {
                 user.printMessage(fileName, fileSize);
-                text = text + user.strMessage(fileName, fileSize);
             }
         }
     }
